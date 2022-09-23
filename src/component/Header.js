@@ -1,27 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Main_img, Join_img, User_img } from "../image";
+import { Join_img, Board_img, Login_img, User_img } from "../image";
 
-const Header = ({ path }) => {
+const Header = ({
+  path_join,
+  path_board,
+  path_main,
+  path_login,
+  path_user,
+}) => {
   return (
     <div className="header">
-      <nav>
-        <div className="nav_item">
-          <Link to={path}>
-            <img src={Main_img} alt="main_img" width={75} />
+      <nav className="nav_bar">
+        <div className="nav_box">
+          <Link to={path_join}>
+            <img className="nav_item" src={Join_img} alt="join_img" />
           </Link>
         </div>
-        <div className="nav_item">
-          <Link to={path}>
-            <img src={Join_img} alt="join_img" width={75} />
+        <div className="nav_box">
+          <Link to={path_board}>
+            <img className="nav_item" src={Board_img} alt="board_img" />
           </Link>
         </div>
-        <div className="nav_item">
-          <Link to={path}>
-            <img src={User_img} alt="user_img" width={75} />
+        <div className="nav_box main_title">
+          <Link to={path_main}>Bros Soft</Link>
+        </div>
+        <div className="nav_box">
+          <Link to={path_login}>
+            <img className="nav_item" src={Login_img} alt="login_img" />
           </Link>
         </div>
-        <div className="main_title">BrosSoft</div>
+        <div className="nav_box">
+          <Link to={path_user}>
+            <img className="nav_item" src={User_img} alt="user_img" />
+          </Link>
+        </div>
       </nav>
     </div>
   );

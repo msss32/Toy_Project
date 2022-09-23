@@ -4,7 +4,13 @@ import { Header, Body } from "../component";
 const Main = () => {
   return (
     <div>
-      <Header />
+      <Header
+        path_main="/"
+        path_join="/join"
+        path_board="/board"
+        path_login="/login"
+        path_user="/mypage"
+      />
       <Body></Body>
     </div>
   );
