@@ -1,38 +1,32 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  font-size: 25px;
 }
 
-.App-link {
-  color: #61dafb;
+.body {
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-color: greenyellow;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main_title {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  font-size: 45px;
+  font-weight: 500;
+  font-family: "ONE-Mobile-POP";
+}
+
+@font-face {
+  font-family: "ONE-Mobile-POP";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
