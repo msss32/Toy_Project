@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Body } from "../component";
+import { Header } from "../component";
 
 const Board = () => {
   return (
@@ -11,7 +11,6 @@ const Board = () => {
         path_login="/login"
         path_user="/mypage"
       />
-      <Body></Body>
     </div>
   );
 };

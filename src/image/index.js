@@ -1,6 +1,7 @@
-import Join_img from "./Join.png";
-import Board_img from "./Board.png";
-import Login_img from "./Login.png";
-import User_img from "./User.png";
+import Join_ico from "./Join.png";
+import Board_ico from "./Board.png";
+import Login_ico from "./Login.png";
+import User_ico from "./User.png";
+import Main_back from "./Main_back.jpg";
 
-export { Join_img, Board_img, Login_img, User_img };
+export { Join_ico, Board_ico, Login_ico, User_ico, Main_back };

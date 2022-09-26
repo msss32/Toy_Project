@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Join_img, Board_img, Login_img, User_img } from "../image";
+import { Join_ico, Board_ico, Login_ico, User_ico } from "../image";
 
 const Header = ({
   path_join,
@@ -14,12 +14,12 @@ const Header = ({
       <nav className="nav_bar">
         <div className="nav_box">
           <Link to={path_join}>
-            <img className="nav_item" src={Join_img} alt="join_img" />
+            <img className="nav_item" src={Join_ico} alt="join_ico" />
           </Link>
         </div>
         <div className="nav_box">
           <Link to={path_board}>
-            <img className="nav_item" src={Board_img} alt="board_img" />
+            <img className="nav_item" src={Board_ico} alt="board_ico" />
           </Link>
         </div>
         <div className="nav_box main_title">
@@ -27,12 +27,12 @@ const Header = ({
         </div>
         <div className="nav_box">
           <Link to={path_login}>
-            <img className="nav_item" src={Login_img} alt="login_img" />
+            <img className="nav_item" src={Login_ico} alt="login_ico" />
           </Link>
         </div>
         <div className="nav_box">
           <Link to={path_user}>
-            <img className="nav_item" src={User_img} alt="user_img" />
+            <img className="nav_item" src={User_ico} alt="user_ico" />
           </Link>
         </div>
       </nav>

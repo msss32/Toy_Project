@@ -1,5 +1,6 @@
 import React from "react";
-import { Header, Body } from "../component";
+import { Header } from "../component";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
@@ -11,7 +12,21 @@ const Main = () => {
         path_login="/login"
         path_user="/mypage"
       />
-      <Body></Body>
+      <div className="main">
+        <div className="main_t">
+          Bros Soft를
+          <br />
+          <br />
+          방문해주신
+          <br />
+          <br /> 여러분을 환영합니다!
+          <br />
+          <br />
+          <button>
+            <Link to></Link>회원가입
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
