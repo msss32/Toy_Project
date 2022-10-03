@@ -1,7 +1,7 @@
 import Main from "./Main";
-import Login from "./Login";
+import Search from "./Search";
 import Join from "./Join";
 import Board from "./Board";
 import Mypage from "./Mypage";
 
-export { Main, Login, Join, Board, Mypage };
+export { Main, Search, Join, Board, Mypage };

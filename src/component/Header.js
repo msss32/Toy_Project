@@ -6,7 +6,7 @@ const Header = ({
   path_join,
   path_board,
   path_main,
-  path_login,
+  path_search,
   path_user,
 }) => {
   return (
@@ -26,7 +26,7 @@ const Header = ({
           <Link to={path_main}>Bros Soft</Link>
         </div>
         <div className="nav_box">
-          <Link to={path_login}>
+          <Link to={path_search}>
             <img className="nav_item" src={Login_ico} alt="login_ico" />
           </Link>
         </div>

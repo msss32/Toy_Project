@@ -9,7 +9,7 @@ const Main = () => {
         path_main="/"
         path_join="/join"
         path_board="/board"
-        path_login="/login"
+        path_search="/search"
         path_user="/mypage"
       />
       <div className="main">
@@ -23,7 +23,7 @@ const Main = () => {
           <br />
           <br />
           <button>
-            <Link to></Link>회원가입
+            <Link to="/join">회원가입</Link>
           </button>
         </div>
       </div>

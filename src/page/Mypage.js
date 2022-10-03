@@ -8,7 +8,7 @@ const Mypage = () => {
         path_main="/"
         path_join="/join"
         path_board="/board"
-        path_login="/login"
+        path_search="/search"
         path_user="/mypage"
       />
     </div>

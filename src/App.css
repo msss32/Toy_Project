@@ -30,6 +30,12 @@
   text-decoration: none;
 }
 
+.main_t a:-webkit-any-link {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 @font-face {
   font-family: "ONE-Mobile-POP";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff")

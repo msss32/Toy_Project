@@ -32,7 +32,7 @@ const Join = () => {
         path_main="/"
         path_join="/join"
         path_board="/board"
-        path_login="/login"
+        path_search="/search"
         path_user="/mypage"
       />
       <div className="contain">
@@ -47,13 +47,13 @@ const Join = () => {
               <input className="externalInput" type="text" placeholder="ID" />
               <input
                 className="externalInput"
-                type="email"
-                placeholder="Email"
+                type="password"
+                placeholder="Password"
               />
               <input
                 className="externalInput"
-                type="password"
-                placeholder="Password"
+                type="name"
+                placeholder="닉네임"
               />
               <br />
               <button className="externalBtn">가입하기</button>
