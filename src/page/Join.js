@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Header } from "../component";
+import { userActions, joinActions } from "../redux/Store";
 
 const Join = () => {
   useEffect(() => {
+    const container = document.getElementById("container");
     const signUpButton = document.getElementById("signUp");
     const signInButton = document.getElementById("signIn");
-    const container = document.getElementById("container");
 
     signUpButton.addEventListener("click", () => {
       container.classList.add("right-panel-active");
@@ -26,6 +28,29 @@ const Join = () => {
       document.head.removeChild(css);
     };
   }, []);
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const joinInput = useSelector((state) => state.join);
+  const joinInputIdHandler = (e) => {
+    dispatch(joinActions.joinInputId(e.target.value));
+  };
+  const joinInputPwHandler = (e) => {
+    dispatch(joinActions.joinInputPw(e.target.value));
+  };
+  const joinInputNameHandler = (e) => {
+    dispatch(joinActions.joinInputName(e.target.value));
+  };
+  const joinSubmit = (e) => {
+    const container = document.getElementById("container");
+    dispatch(userActions.signUp(joinInput));
+    e.preventDefault();
+    container.classList.remove("right-panel-active");
+  };
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   return (
     <div>
       <Header
@@ -38,22 +63,29 @@ const Join = () => {
       <div className="contain">
         <div className="externalContainer" id="container">
           <div className="form-container sign-up-container">
-            <form action="#" className="externalForm">
+            <form onSubmit={joinSubmit} className="externalForm">
               <h1 className="externalh1">회원가입</h1>
               <span className="externalSpan">
                 아래 빈칸에 아이디와 이메일, <br />
                 비밀번호를 입력해주세요!
               </span>
-              <input className="externalInput" type="text" placeholder="ID" />
+              <input
+                className="externalInput"
+                type="text"
+                placeholder="ID"
+                onChange={joinInputIdHandler}
+              />
               <input
                 className="externalInput"
                 type="password"
                 placeholder="Password"
+                onChange={joinInputPwHandler}
               />
               <input
                 className="externalInput"
                 type="name"
                 placeholder="닉네임"
+                onChange={joinInputNameHandler}
               />
               <br />
               <button className="externalBtn">가입하기</button>
