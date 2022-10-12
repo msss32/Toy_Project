@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../component";
-import { userActions, joinActions } from "../redux/Store";
+import { userActions, joinActions, loginActions } from "../redux/Store";
 
 const Join = () => {
   useEffect(() => {
@@ -29,27 +30,58 @@ const Join = () => {
     };
   }, []);
 
+  const nav = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.users.users);
   const joinInput = useSelector((state) => state.join);
-  const joinInputIdHandler = (e) => {
-    dispatch(joinActions.joinInputId(e.target.value));
+  // const isLogin = useSelector((state) => state.login.isLogin);
+
+  const joinIdHandler = (e) => {
+    dispatch(joinActions.joinId(e.target.value));
   };
-  const joinInputPwHandler = (e) => {
-    dispatch(joinActions.joinInputPw(e.target.value));
+  const joinPwHandler = (e) => {
+    dispatch(joinActions.joinPw(e.target.value));
   };
-  const joinInputNameHandler = (e) => {
-    dispatch(joinActions.joinInputName(e.target.value));
+  const joinNameHandler = (e) => {
+    dispatch(joinActions.joinName(e.target.value));
   };
   const joinSubmit = (e) => {
     const container = document.getElementById("container");
-    dispatch(userActions.signUp(joinInput));
-    e.preventDefault();
-    container.classList.remove("right-panel-active");
+    if (joinInput.id !== "" && joinInput.pw !== "" && joinInput.name !== "") {
+      dispatch(userActions.signUp(joinInput));
+      e.preventDefault();
+      container.classList.remove("right-panel-active");
+    } else if (joinInput.id === "") {
+      e.preventDefault();
+      alert("아이디를 입력해주세요");
+    } else if (joinInput.pw === "") {
+      e.preventDefault();
+      alert("비밀번호를 입력해주세요");
+    } else if (joinInput.name === "") {
+      e.preventDefault();
+      alert("닉네임을 입력해주세요");
+    }
   };
   useEffect(() => {
     console.log(user);
   }, [user]);
+
+  const idInput = useRef();
+  const pwInput = useRef();
+
+  const login = (e) => {
+    e.preventDefault();
+    for (let i = 0; i < user.length; i++) {
+      if (user[i].id === idInput.value && user[i].pw === pwInput.value) {
+        dispatch(loginActions.login(idInput.value, pwInput.value));
+        nav("/");
+      } else if (user[i].id !== idInput.value) {
+        alert("아이디를 확인해주세요");
+      } else if (user[i].pw !== pwInput.value) {
+        alert("비밀번호를 확인해주세요");
+      }
+    }
+  };
 
   return (
     <div>
@@ -73,36 +105,50 @@ const Join = () => {
                 className="externalInput"
                 type="text"
                 placeholder="ID"
-                onChange={joinInputIdHandler}
+                onChange={joinIdHandler}
               />
               <input
                 className="externalInput"
                 type="password"
                 placeholder="Password"
-                onChange={joinInputPwHandler}
+                onChange={joinPwHandler}
+                autoComplete="on"
               />
               <input
                 className="externalInput"
                 type="name"
                 placeholder="닉네임"
-                onChange={joinInputNameHandler}
+                onChange={joinNameHandler}
               />
               <br />
               <button className="externalBtn">가입하기</button>
             </form>
           </div>
           <div className="form-container sign-in-container">
-            <form action="#" className="externalForm">
+            <form onSubmit={login} className="externalForm">
               <h1 className="externalh1">로그인</h1>
               <br />
               <span className="externalSpan">
                 아이디와 비밀번호를 입력해주세요
               </span>
-              <input className="externalInput" type="text" placeholder="ID" />
+              <input
+                className="externalInput"
+                type="text"
+                placeholder="ID"
+                ref={idInput}
+                onChange={(e) => {
+                  idInput.value = e.target.value;
+                }}
+              />
               <input
                 className="externalInput"
                 type="password"
                 placeholder="Password"
+                ref={pwInput}
+                onChange={(e) => {
+                  pwInput.value = e.target.value;
+                }}
+                autoComplete="on"
               />
               <br />
               <button className="externalBtn">로그인</button>

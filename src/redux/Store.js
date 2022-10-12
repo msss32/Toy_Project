@@ -1,7 +1,7 @@
 import { combineReducers, configureStore, createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
-  name: "user",
+  name: "users",
   initialState: { users: [] },
   reducers: {
     signUp: (state, action) => {
@@ -12,32 +12,39 @@ const userSlice = createSlice({
 
 const joinSlice = createSlice({
   name: "join",
-  initialState: { joinId: "", joinPw: "", joinName: "" },
+  initialState: { id: "", pw: "", name: "" },
   reducers: {
-    joinInputId: (state, action) => {
-      state.joinId = action.payload;
+    joinId: (state, action) => {
+      state.id = action.payload;
     },
-    joinInputPw: (state, action) => {
-      state.joinPw = action.payload;
+    joinPw: (state, action) => {
+      state.pw = action.payload;
     },
-    joinInputName: (state, action) => {
-      state.joinName = action.payload;
+    joinName: (state, action) => {
+      state.name = action.payload;
     },
   },
 });
 
 const loginSlice = createSlice({
   name: "login",
-  initialState: { login: false, loginId: "", loginPw: "" },
+  initialState: { id: "", pw: "", isLogin: false },
   reducers: {
-    login: (state) => {
-      state.login = true;
+    login: (state, action) => {
+      state.id = action.payload;
+      state.pw = action.payload;
+      state.isLogin = true;
+    },
+    logout: (state) => {
+      state.id = "";
+      state.pw = "";
+      state.isLogin = false;
     },
   },
 });
 
 const rootReducer = combineReducers({
-  user: userSlice.reducer,
+  users: userSlice.reducer,
   login: loginSlice.reducer,
   join: joinSlice.reducer,
 });
@@ -49,4 +56,5 @@ const store = configureStore({
 export const userActions = userSlice.actions;
 export const loginActions = loginSlice.actions;
 export const joinActions = joinSlice.actions;
+
 export default store;
